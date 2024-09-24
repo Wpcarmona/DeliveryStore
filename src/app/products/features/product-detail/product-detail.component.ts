@@ -7,6 +7,6 @@ import { Component } from '@angular/core';
   templateUrl: './product-detail.component.html',
   styleUrl: './product-detail.component.scss'
 })
-export class ProductDetailComponent {
+export default class ProductDetailComponent {
 
 }

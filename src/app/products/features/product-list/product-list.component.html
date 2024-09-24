@@ -1,1 +1,33 @@
-<p>product-list works!</p>
+
+<div class="mx-auto max-w-screen-xl">
+
+    @switch (productsState.state().status) {
+
+        @case ('loading') {
+            <p>Cargando...</p>
+        }
+
+        @case ('error') {
+            <p>Ocurrio un error</p>
+        }
+
+        @default {
+            <div class="flex justify-end my-6">
+                <button 
+                (click)="changePage()"
+                type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 focus:outline-none dark:focus:ring-blue-800">Cambiar pagina</button>
+            </div>
+            <div class="grid grid-cols-[repeat(4,300px)] gap-4">
+                @for (product of productsState.state().products; track product) {
+                    @defer (on viewport) {
+                        <app-product-card class="block" [product]="product" />
+                    } @placeholder {
+                        <p>Cargando...</p>
+                    }
+                }
+              </div>
+        }
+    }
+
+   
+</div>
